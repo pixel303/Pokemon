@@ -1,24 +1,37 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 using namespace std;
 
-// Enum class for Pokemon choices
-enum class PokemonChoice {
-    Charmander = 1,
-    Bulbasaur = 2,
-    Squirtle = 3,
-    InvalidChoice = 4
+void waitForEnter();
+void clearConsole();
+
+// Enum class for Pokemon types
+enum class PokemonType {
+    Electric,
+    Fire,
+    Grass,
+    Water
 };
 
 // Class representing a Pokemon
 class Pokemon {
 public:
     string name;
-    string type;
+    PokemonType type;
     int health;
 
-    Pokemon(string n, string t, int h) : name(n), type(t), health(h) {}
+    // Default constructor
+    Pokemon() : name("Pikachu"), type(PokemonType::Electric), health(10) {}
+
+    // Parameterized constructor
+    Pokemon(string p_name, PokemonType p_type, int p_health)
+        : name(p_name), type(p_type), health(p_health) {}
+
+    // Copy constructor
+    Pokemon(const Pokemon& other)
+        : name(other.name), type(other.type), health(other.health) {}
 
     void attack() {
         cout << name << " attacks with a powerful move!" << endl;
@@ -31,7 +44,16 @@ public:
     string name;
     Pokemon chosenPokemon;
 
-    Player() : chosenPokemon("None", "None", 0) {}
+    // Default constructor
+    Player() : name("Trainer"), chosenPokemon() {}
+
+    // Parameterized constructor
+    Player(string p_name, Pokemon p_chosenPokemon)
+        : name(p_name), chosenPokemon(p_chosenPokemon) {}
+
+    // Copy constructor
+    Player(const Player& other)
+        : name(other.name), chosenPokemon(other.chosenPokemon) {}
 
     void choosePokemon() {
         int choice;
@@ -40,22 +62,24 @@ public:
 
         switch (choice) {
         case 1:
-            chosenPokemon = Pokemon("Charmander", "Fire", 100);
+            chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
             cout << "Professor Oak: A fiery choice! Charmander is yours!\n";
             break;
         case 2:
-            chosenPokemon = Pokemon("Bulbasaur", "Grass", 100);
+            chosenPokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
             cout << "Professor Oak: A fine choice! Bulbasaur is yours!\n";
             break;
         case 3:
-            chosenPokemon = Pokemon("Squirtle", "Water", 100);
+            chosenPokemon = Pokemon("Squirtle", PokemonType::Water, 100);
             cout << "Professor Oak: A cool choice! Squirtle is yours!\n";
             break;
         default:
-            chosenPokemon = Pokemon("Charmander", "Fire", 100);
+            chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
             cout << "Professor Oak: Invalid choice, but don't worry! Charmander is yours by default.\n";
             break;
         }
+        // Wait for the player to press Enter after making their choice
+        waitForEnter();
     }
 };
 
@@ -81,19 +105,81 @@ public:
         cout << "2. Bulbasaur - The grass type. Calm and collected!\n";
         cout << "3. Squirtle - The water type. Cool as a cucumber!\n";
     }
+
+    // Method to explain the main quest
+    void explainMainQuest(Player& player) {
+        cout << "Professor Oak: Ah, " << player.name << ", let me tell you about your grand adventure that's about to unfold!\n";
+        waitForEnter();
+
+        cout << "Professor Oak: Becoming a Pokémon Master is no easy task. It demands courage, strategy, and sometimes a little bit of luck.\n";
+        waitForEnter();
+
+        cout << "Professor Oak: Your main mission is to collect all the Pokémon Badges and defeat the Pokémon League. Only then can you challenge the Elite Four and aim for the title of Champion.\n";
+        waitForEnter();
+
+        cout << player.name << ": Wait, isn’t that just like every other Pokémon game?\n";
+        waitForEnter();
+
+        cout << "Professor Oak: No breaking the fourth wall, " << player.name << "! This is serious business.\n";
+        waitForEnter();
+
+        cout << "Professor Oak: To achieve this, you must capture new Pokémon, battle wild creatures, challenge gym leaders, and keep your Pokémon healthy at the PokeCenter.\n";
+        waitForEnter();
+
+        cout << "Professor Oak: Remember, you can only carry a limited number of Pokémon. Choose wisely who you want on your team!\n";
+        waitForEnter();
+
+        cout << player.name << ": Piece of cake, right?\n";
+        waitForEnter();
+
+        cout << "Professor Oak: Ha! That’s what everyone thinks. But the path to becoming a Champion is filled with obstacles. Lose a battle, and it’s back to the start!\n";
+        waitForEnter();
+
+        cout << "Professor Oak: So, what do you say? Are you ready to embark on this epic journey to become the next Pokémon Champion?\n";
+        waitForEnter();
+
+        cout << player.name << ": Ready as I’ll ever be, Professor!\n";
+        waitForEnter();
+
+        cout << "Professor Oak: That’s the spirit! Now, your journey begins. Remember, it’s not just about battling—it’s about forming bonds with your Pokémon. Go, Trainer, the world of Pokémon awaits you!\n";
+        waitForEnter();
+
+        cout << "Professor Oak: Oh, and about the actual game loop… let’s just pretend I didn’t forget to set it up. Onwards!\n";
+        waitForEnter();
+    }
 };
 
+// Function to wait for the player to press Enter
+void waitForEnter() {
+    cout << "(Press Enter to continue...)\n";
+    cin.ignore(); 
+    cin.get();    
+}
+
+// Function to clear the console
+void clearConsole() {
+    
+#ifdef _WIN32
+    system("cls"); 
+#else
+    system("clear"); 
+#endif
+}
+
 int main() {
-    // Create the main game objects
+    
     ProfessorOak professor;
     Player player;
 
-    // Professor greets the player and offers Pokemon choices
+    clearConsole();
+
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
-    player.choosePokemon();
+    player.choosePokemon(); 
 
-    // Acknowledge the chosen Pokemon
+    clearConsole();
+    professor.explainMainQuest(player);
+
     cout << "Professor Oak: " << player.chosenPokemon.name << " and you, " << player.name << ", are going to be the best of friends!\n";
     cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokémon!\n";
 
