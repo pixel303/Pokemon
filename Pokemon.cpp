@@ -167,10 +167,11 @@ void clearConsole() {
 }
 
 int main() {
+    clearConsole();
     ProfessorOak professor;
     Player player;
 
-    clearConsole();
+    
 
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
