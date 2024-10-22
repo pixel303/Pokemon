@@ -4,11 +4,7 @@
 
 using namespace std;
 
-
-
-
-
-
+// Function prototypes
 void waitForEnter();
 void clearConsole();
 
@@ -83,7 +79,6 @@ public:
             cout << "Professor Oak: Invalid choice, but don't worry! Charmander is yours by default.\n";
             break;
         }
-        // Wait for the player to press Enter after making their choice
         waitForEnter();
     }
 };
@@ -157,22 +152,20 @@ public:
 // Function to wait for the player to press Enter
 void waitForEnter() {
     cout << "(Press Enter to continue...)\n";
-    cin.ignore(); 
-    cin.get();    
+    cin.ignore();
+    cin.get();
 }
 
 // Function to clear the console
 void clearConsole() {
-    
 #ifdef _WIN32
-    system("cls"); 
+    system("cls");
 #else
-    system("clear"); 
+    system("clear");
 #endif
 }
 
 int main() {
-    
     ProfessorOak professor;
     Player player;
 
@@ -180,7 +173,7 @@ int main() {
 
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
-    player.choosePokemon(); 
+    player.choosePokemon();
 
     clearConsole();
     professor.explainMainQuest(player);
