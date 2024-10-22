@@ -170,6 +170,9 @@ int main() {
     ProfessorOak professor;
     Player player;
 
+    
+    
+    
     clearConsole();
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
