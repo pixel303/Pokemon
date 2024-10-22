@@ -169,12 +169,14 @@ void clearConsole() {
 int main() {
     ProfessorOak professor;
     Player player;
-    clearConsole();
+
+    clearConsole(); 
+
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
     player.choosePokemon();
 
-    clearConsole();
+    clearConsole(); 
     professor.explainMainQuest(player);
 
     cout << "Professor Oak: " << player.chosenPokemon.name << " and you, " << player.name << ", are going to be the best of friends!\n";
