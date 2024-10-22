@@ -2,11 +2,12 @@
 #include <string>
 #include <cstdlib>
 
-using namespace std;
 
 // Function prototypes
 void waitForEnter();
 void clearConsole();
+
+using namespace std;
 
 // Enum class for Pokemon types
 enum class PokemonType {
