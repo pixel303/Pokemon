@@ -1,19 +1,15 @@
+#include"PokemonChoice.hpp"
+#include"PokemonType.hpp"
 #include <iostream>
 #include <string>
 #include <cstdlib>
-
-void waitForEnter();
-void clearConsole();
+#include <limits> 
 
 using namespace std;
 
-// Enum class for Pokemon types
-enum class PokemonType {
-    Electric,
-    Fire,
-    Grass,
-    Water
-};
+// Function prototypes
+void waitForEnter();
+void clearConsole();
 
 // Class representing a Pokemon
 class Pokemon {
@@ -38,7 +34,7 @@ public:
     }
 };
 
-// Class representing a Player (Pokemon Trainer)
+// Class representing Player 
 class Player {
 public:
     string name;
@@ -60,22 +56,22 @@ public:
         cout << "Which Pokemon would you like to choose? Enter the number: ";
         cin >> choice;
 
-        switch (choice) {
-        case 1:
+        switch (static_cast<PokemonChoice>(choice)) {
+        case PokemonChoice::Charmander:
             chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
             cout << "Professor Oak: A fiery choice! Charmander is yours!\n";
             break;
-        case 2:
+        case PokemonChoice::Bulbasaur:
             chosenPokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
             cout << "Professor Oak: A fine choice! Bulbasaur is yours!\n";
             break;
-        case 3:
+        case PokemonChoice::Squirtle:
             chosenPokemon = Pokemon("Squirtle", PokemonType::Water, 100);
             cout << "Professor Oak: A cool choice! Squirtle is yours!\n";
             break;
         default:
-            chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
-            cout << "Professor Oak: Invalid choice, but don't worry! Charmander is yours by default.\n";
+            chosenPokemon = Pokemon("Pikachu", PokemonType::Electric, 100);
+            cout << "Professor Oak: Invalid choice, but don't worry! Pikachu is yours by default.\n";
             break;
         }
         waitForEnter();
@@ -191,7 +187,7 @@ void gameLoop(Player& player) {
 // Function to wait for the player to press Enter
 void waitForEnter() {
     cout << "(Press Enter to continue...)\n";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     cin.get(); // Wait for Enter key
 }
 
@@ -223,4 +219,4 @@ int main() {
     gameLoop(player); // Start the game loop
 
     return 0;
-#include"header.hpp"
+}
