@@ -91,16 +91,16 @@ public:
     ProfessorOak() : name("Professor Oak") {}
 
     void greetPlayer(Player& player) {
-        cout << "Professor Oak: Hello there! Welcome to the world of Pokémon!\n";
-        cout << "Professor Oak: My name is Oak. People call me the Pokémon Professor!\n";
+        cout << "Professor Oak: Hello there! Welcome to the world of PokÃ©mon!\n";
+        cout << "Professor Oak: My name is Oak. People call me the PokÃ©mon Professor!\n";
         cout << "Professor Oak: But enough about me. Let's talk about you!\n";
-        cout << "Professor Oak: First, tell me, what’s your name?\n\n[";
+        cout << "Professor Oak: First, tell me, whatâ€™s your name?\n\n[";
         cin >> player.name;
         cout << "]\n\nProfessor Oak: Ah, " << player.name << "! What a fantastic name!\n";
     }
 
     void offerPokemonChoices() {
-        cout << "Professor Oak: I have three Pokémon here with me. They’re all quite feisty!\n";
+        cout << "Professor Oak: I have three PokÃ©mon here with me. Theyâ€™re all quite feisty!\n";
         cout << "1. Charmander - The fire type. A real hothead!\n";
         cout << "2. Bulbasaur - The grass type. Calm and collected!\n";
         cout << "3. Squirtle - The water type. Cool as a cucumber!\n";
@@ -111,6 +111,7 @@ public:
         cout << "Professor Oak: Ah, " << player.name << ", let me tell you about your grand adventure that's about to unfold!\n";
         waitForEnter();
 
+
         cout << "Professor Oak: Becoming a Pokémon Master is no easy task. It demands courage, strategy, and sometimes a little bit of luck.\n";
         waitForEnter();
 
@@ -118,6 +119,7 @@ public:
         waitForEnter();
 
         cout << player.name << ": Wait, isn’t that just like every other Pokémon game?\n";
+
         waitForEnter();
 
         cout << "Professor Oak: No breaking the fourth wall, " << player.name << "! This is serious business.\n";
@@ -127,6 +129,7 @@ public:
         waitForEnter();
 
         cout << "Professor Oak: Remember, you can only carry a limited number of Pokémon. Choose wisely who you want on your team!\n";
+
         waitForEnter();
 
         cout << player.name << ": Piece of cake, right?\n";
@@ -179,7 +182,7 @@ int main() {
     professor.explainMainQuest(player);
 
     cout << "Professor Oak: " << player.chosenPokemon.name << " and you, " << player.name << ", are going to be the best of friends!\n";
-    cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokémon!\n";
+    cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of PokÃ©mon!\n";
 
     return 0;
 }
