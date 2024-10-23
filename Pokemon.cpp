@@ -2,6 +2,8 @@
 #include"Utility.cpp"
 #include"PokemonChoice.hpp"
 #include"PokemonType.hpp"
+#include"Player.hpp"
+#include"Player.cpp"
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -33,7 +35,7 @@ public:
     }
 };
 
-// Class representing Player 
+/*Class representing Player
 class Player {
 public:
     string name;
@@ -75,7 +77,7 @@ public:
         }
         Utility::waitForEnter();
     }
-};
+};*/
 
 // Class representing Professor Oak
 class ProfessorOak {
