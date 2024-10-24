@@ -1,10 +1,21 @@
-#include"Player.hpp"
-#include<iostream>
-#include<string>
+#include "Player.hpp"  
+#include <iostream>
 
 using namespace std;
 
-void choosePokemon() {
+// Default constructor
+Player::Player() : name("Trainer"), chosenPokemon() {}
+
+// Parameterized constructor
+Player::Player(string p_name, Pokemon p_chosenPokemon)
+    : name(p_name), chosenPokemon(p_chosenPokemon) {}
+
+// Copy constructor
+Player::Player(const Player& other)
+    : name(other.name), chosenPokemon(other.chosenPokemon) {}
+
+// Function to choose a Pokemon
+void Player::choosePokemon() {
     int choice;
     cout << "Which Pokemon would you like to choose? Enter the number: ";
     cin >> choice;

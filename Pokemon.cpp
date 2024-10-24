@@ -2,8 +2,7 @@
 #include"Utility.cpp"
 #include"PokemonChoice.hpp"
 #include"PokemonType.hpp"
-#include"Player.hpp"
-#include"Player.cpp"
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -34,6 +33,9 @@ public:
         cout << name << " attacks with a powerful move!" << endl;
     }
 };
+#include"Player.hpp"
+#include"Player.cpp"
+
 
 /*Class representing Player
 class Player {

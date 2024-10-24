@@ -1,22 +1,27 @@
-#include"PokemonChoice.hpp"
-#include"PokemonType.hpp"
-#include"Utility.hpp"
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
+#include <string>
+#include "PokemonType.hpp"  // Include the header for PokemonType
+#include "PokemonChoice.hpp" // Include the header for PokemonChoice
+#include "Utility.hpp"      // Include the header for Utility
 
 class Player {
 public:
-    string name;
-    Pokemon chosenPokemon;
+    std::string name;        // Player's name
+    Pokemon chosenPokemon;   // The Pokemon chosen by the player
 
     // Default constructor
-    Player() : name("Trainer"), chosenPokemon() {}
+    Player();
 
     // Parameterized constructor
-    Player(string p_name, Pokemon p_chosenPokemon)
-        : name(p_name), chosenPokemon(p_chosenPokemon) {}
+    Player(std::string p_name, Pokemon p_chosenPokemon);
 
     // Copy constructor
-    Player(const Player& other)
-        : name(other.name), chosenPokemon(other.chosenPokemon) {}
+    Player(const Player& other);
 
-    static void choosePokemon();
+    // Function to choose a Pokemon
+    void choosePokemon();
 };
+
+#endif // PLAYER_HPP
