@@ -1,3 +1,4 @@
+#include "Pokemon.hpp"
 #include "Player.hpp"  
 #include <iostream>
 
