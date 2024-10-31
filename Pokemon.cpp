@@ -1,86 +1,33 @@
+#include"Pokemon.hpp"
+#include"Utility.hpp"
+#include"Utility.cpp"
+#include"PokemonChoice.hpp"
+#include"PokemonType.hpp"
 #include <iostream>
 #include <string>
 #include <cstdlib>
-
-void waitForEnter();
-void clearConsole();
+#include <limits> 
 
 using namespace std;
 
-// Enum class for Pokemon types
-enum class PokemonType {
-    Electric,
-    Fire,
-    Grass,
-    Water
-};
 
-// Class representing a Pokemon
-class Pokemon {
-public:
-    string name;
-    PokemonType type;
-    int health;
 
-    // Default constructor
-    Pokemon() : name("Pikachu"), type(PokemonType::Electric), health(10) {}
+// Default constructor
+Pokemon::Pokemon() : name("Pikachu"), type(PokemonType::Electric), health(10) {}
 
-    // Parameterized constructor
-    Pokemon(string p_name, PokemonType p_type, int p_health)
-        : name(p_name), type(p_type), health(p_health) {}
+// Parameterized constructor
+Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health)
+    : name(p_name), type(p_type), health(p_health) {}
 
-    // Copy constructor
-    Pokemon(const Pokemon& other)
-        : name(other.name), type(other.type), health(other.health) {}
+// Copy constructor
+Pokemon::Pokemon(const Pokemon& other)
+    : name(other.name), type(other.type), health(other.health) {}
 
-    void attack() {
-        cout << name << " attacks with a powerful move!" << endl;
-    }
-};
-
-// Class representing a Player (Pokemon Trainer)
-class Player {
-public:
-    string name;
-    Pokemon chosenPokemon;
-
-    // Default constructor
-    Player() : name("Trainer"), chosenPokemon() {}
-
-    // Parameterized constructor
-    Player(string p_name, Pokemon p_chosenPokemon)
-        : name(p_name), chosenPokemon(p_chosenPokemon) {}
-
-    // Copy constructor
-    Player(const Player& other)
-        : name(other.name), chosenPokemon(other.chosenPokemon) {}
-
-    void choosePokemon() {
-        int choice;
-        cout << "Which Pokemon would you like to choose? Enter the number: ";
-        cin >> choice;
-
-        switch (choice) {
-        case 1:
-            chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
-            cout << "Professor Oak: A fiery choice! Charmander is yours!\n";
-            break;
-        case 2:
-            chosenPokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
-            cout << "Professor Oak: A fine choice! Bulbasaur is yours!\n";
-            break;
-        case 3:
-            chosenPokemon = Pokemon("Squirtle", PokemonType::Water, 100);
-            cout << "Professor Oak: A cool choice! Squirtle is yours!\n";
-            break;
-        default:
-            chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
-            cout << "Professor Oak: Invalid choice, but don't worry! Charmander is yours by default.\n";
-            break;
-        }
-        waitForEnter();
-    }
-};
+void Pokemon::attack() {
+    cout << name << " attacks with a powerful move!" << endl;
+}
+#include"Player.hpp"
+#include"Player.cpp"
 
 // Class representing Professor Oak
 class ProfessorOak {
@@ -108,43 +55,43 @@ public:
     // Method to explain the main quest
     void explainMainQuest(Player& player) {
         cout << "Professor Oak: Ah, " << player.name << ", let me tell you about your grand adventure that's about to unfold!\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: Becoming a Pokemon Master is no easy task. It demands courage, strategy, and sometimes a little bit of luck.\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: Your main mission is to collect all the Pokemon Badges and defeat the Pokemon League. Only then can you challenge the Elite Four and aim for the title of Champion.\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << player.name << ": Wait, isn’t that just like every other Pokemon game?\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: No breaking the fourth wall, " << player.name << "! This is serious business.\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: To achieve this, you must capture new Pokemon, battle wild creatures, challenge gym leaders, and keep your Pokemon healthy at the PokeCenter.\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: Remember, you can only carry a limited number of Pokemon. Choose wisely who you want on your team!\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << player.name << ": Piece of cake, right?\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: Ha! That’s what everyone thinks. But the path to becoming a Champion is filled with obstacles. Lose a battle, and it’s back to the start!\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: So, what do you say? Are you ready to embark on this epic journey to become the next Pokemon Champion?\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << player.name << ": Ready as I’ll ever be, Professor!\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: That’s the spirit! Now, your journey begins. Remember, it’s not just about battling—it’s about forming bonds with your Pokemon. Go, Trainer, the world of Pokemon awaits you!\n";
-        waitForEnter();
+        Utility::waitForEnter();
 
         cout << "Professor Oak: Oh, and about the actual game loop… let’s just pretend I didn’t forget to set it up. Onwards!\n";
-        waitForEnter();
+        Utility::waitForEnter();
     }
 };
 
@@ -152,7 +99,7 @@ public:
 void gameLoop(Player& player) {
     bool keepPlaying = true;
     while (keepPlaying) {
-        clearConsole();
+        Utility::clearConsole();
         int choice;
         cout << "What would you like to do next, " << player.name << "?\n";
         cout << "1. Battle Wild Pokemon\n";
@@ -162,6 +109,8 @@ void gameLoop(Player& player) {
         cout << "5. Quit\n";
         cout << "Enter your choice: ";
         cin >> choice;
+
+        Utility::clearInputBuffer();
 
         switch (choice) {
         case 1:
@@ -184,37 +133,22 @@ void gameLoop(Player& player) {
             cout << "Invalid choice. Please try again.\n";
             break;
         }
-        waitForEnter();
+        Utility::waitForEnter();
     }
 }
 
-// Function to wait for the player to press Enter
-void waitForEnter() {
-    cout << "(Press Enter to continue...)\n";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
-    cin.get(); // Wait for Enter key
-}
-
-// Function to clear the console
-void clearConsole() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
-}
 
 int main() {
     ProfessorOak professor;
     Player player;
 
-    clearConsole();
+    Utility::clearConsole();
 
     professor.greetPlayer(player);
     professor.offerPokemonChoices();
     player.choosePokemon();
 
-    clearConsole();
+    Utility::clearConsole();
     professor.explainMainQuest(player);
 
     cout << "Professor Oak: " << player.chosenPokemon.name << " and you, " << player.name << ", are going to be the best of friends!\n";
