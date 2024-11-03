@@ -2,7 +2,8 @@
 #define POKEMON_HPP
 
 #include <string>
-#include "PokemonType.hpp"  
+  
+enum class PokemonType;
 
 class Pokemon {
 public:
