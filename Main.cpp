@@ -1,14 +1,18 @@
-#include "Pokemon.hpp"
+
 #include "Utility.hpp"
 #include "PokemonChoice.hpp"
-#include "PokemonType.hpp"
-#include "Player.hpp"
+
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <limits>
 
 using namespace std;
+
+class Player;
+class Pokemon;
+enum class PokemonType;
 
 // Class representing Professor Oak
 class ProfessorOak {
